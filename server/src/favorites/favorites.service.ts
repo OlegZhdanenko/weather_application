@@ -1,26 +1,64 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateFavoriteDto } from './dto/create-favorite.dto';
 import { UpdateFavoriteDto } from './dto/update-favorite.dto';
+import { Repository } from 'typeorm';
+import { Favorite } from './entities/favorite.entity';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class FavoritesService {
-  create(createFavoriteDto: CreateFavoriteDto) {
-    return 'This action adds a new favorite';
+  constructor(
+    @InjectRepository(Favorite)
+    private readonly categoryRepository: Repository<Favorite>,
+  ) {}
+  async create(createFavoriteDto: CreateFavoriteDto, id: number) {
+    const isExist = await this.categoryRepository.findBy({
+      user: { id },
+      city: createFavoriteDto.city,
+    });
+    if (isExist.length)
+      throw new BadRequestException('This city already in favorite');
+    const newFavoriteCity = {
+      city: createFavoriteDto.city,
+      user: { id },
+    };
+    return await this.categoryRepository.save(newFavoriteCity);
   }
 
-  findAll() {
-    return `This action returns all favorites`;
+  async findAll(id: number) {
+    return await this.categoryRepository.find({
+      where: {
+        user: { id },
+      },
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} favorite`;
+  async findOne(id: number) {
+    const favoriteCity = await this.categoryRepository.findOne({
+      where: { id },
+      relations: { user: true },
+    });
+    if (favoriteCity) throw new NotFoundException('This city not found');
+    return favoriteCity;
   }
 
-  update(id: number, updateFavoriteDto: UpdateFavoriteDto) {
-    return `This action updates a #${id} favorite`;
+  async update(id: number, updateFavoriteDto: UpdateFavoriteDto) {
+    const favoriteCity = await this.categoryRepository.findOne({
+      where: { id },
+    });
+    if (favoriteCity) throw new NotFoundException('This city not found');
+    return await this.categoryRepository.update(id, updateFavoriteDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} favorite`;
+  async remove(id: number) {
+    const favoriteCity = await this.categoryRepository.findOne({
+      where: { id },
+    });
+    if (!favoriteCity) throw new NotFoundException('This city not found');
+    return await this.categoryRepository.delete(id);
   }
 }
