@@ -17,4 +17,9 @@ export class AuthController {
   getProfile(@Request() req) {
     return req.user;
   }
+  @Post('logout')
+  @UseGuards(LocalAuthGuard)
+  async logout(@Request() req) {
+    return this.authService.logout(req.user);
+  }
 }

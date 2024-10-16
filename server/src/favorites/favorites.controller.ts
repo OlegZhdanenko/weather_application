@@ -24,13 +24,13 @@ export class FavoritesController {
   @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe())
   create(@Body() createFavoriteDto: CreateFavoriteDto, @Req() req) {
-    return this.favoritesService.create(createFavoriteDto, +req.user.id);
+    return this.favoritesService.create(createFavoriteDto, req.user.id);
   }
 
   @Get()
   @UseGuards(JwtAuthGuard)
   findAll(@Req() req) {
-    return this.favoritesService.findAll(+req.user.id);
+    return this.favoritesService.findAll(req.user.id);
   }
 
   @Get(':id')

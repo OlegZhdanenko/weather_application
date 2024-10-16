@@ -3,7 +3,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
-import * as bcrypt from 'bcrypt';
+import * as argon from 'argon2';
 import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
@@ -22,7 +22,7 @@ export class UsersService {
 
     const user = await this.userRepository.save({
       email: createUserDto.email,
-      password: await bcrypt.hash(createUserDto.password, 10),
+      password: await argon.hash(createUserDto.password),
       name: createUserDto.name,
     });
     const token = this.jwtService.sign({ email: createUserDto.email });

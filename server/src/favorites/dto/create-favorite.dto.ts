@@ -5,5 +5,5 @@ export class CreateFavoriteDto {
   @IsNotEmpty()
   city: string;
   @IsOptional()
-  user: User;
+  user?: User;
 }
