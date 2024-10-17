@@ -13,8 +13,6 @@ export class AuthService {
   async validateUser(email: string, password: string) {
     const user = await this.usersService.findOne(email);
     const passwordIsMatch = await argon.verify(user.password, password);
-    console.log({ passwordIsMatch });
-
     if (user && passwordIsMatch) {
       return user;
     }
@@ -26,14 +24,11 @@ export class AuthService {
       name,
       id,
       email,
-      access_token: this.jwtService.sign({ id: user.id, email: user.email }),
-    };
-  }
-  async logout(user: IUser) {
-    const { name } = user;
-    return {
-      name,
-      access_token: null,
+      access_token: this.jwtService.sign({
+        id: user.id,
+        email: user.email,
+        name: user.name,
+      }),
     };
   }
 }
