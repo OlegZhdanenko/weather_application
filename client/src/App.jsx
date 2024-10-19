@@ -11,6 +11,8 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getProfile } from "./redux/auth/operations";
 import { Toaster } from "react-hot-toast";
+import NotFound from "./pages/NotFound";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +37,7 @@ function App() {
           path="/weather"
           element={<PrivateRoute component={<Weather />} redirectTo="/" />}
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster position="bottom-right" reverseOrder={false} />
     </Layout>

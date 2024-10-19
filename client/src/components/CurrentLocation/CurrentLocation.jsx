@@ -29,14 +29,9 @@ export default function CurrentLocation() {
     if (location.latitude) {
       try {
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/forecast`,
+          `https://api.openweathermap.org/data/2.5/forecast?lat=${location.latitude}&lon=${location.longitude}&units=metric&cnt=9&appid=fc5d4d5ed3e66ef0c40354ac1f569272`,
           {
-            params: {
-              lat: location.latitude,
-              lon: location.longitude,
-              appid: "b619abe5a9b0774c51550d51d47ef802",
-              units: "metric",
-            },
+            headers: "HTTP/1.1 200 OK",
           }
         );
 
@@ -60,14 +55,9 @@ export default function CurrentLocation() {
     if (location.latitude) {
       try {
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather`,
+          `https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&units=metric&appid=fc5d4d5ed3e66ef0c40354ac1f569272`,
           {
-            params: {
-              lat: location.latitude,
-              lon: location.longitude,
-              appid: "b619abe5a9b0774c51550d51d47ef802",
-              units: "metric",
-            },
+            headers: "HTTP/1.1 200 OK",
           }
         );
 
@@ -92,8 +82,14 @@ export default function CurrentLocation() {
   }, [location]);
 
   return (
-    weatherData && (
-      <WeatherCard weather={weather} weatherData={weatherData} error={error} />
-    )
+    <div>
+      {weatherData && (
+        <WeatherCard
+          weather={weather}
+          weatherData={weatherData}
+          error={error}
+        />
+      )}
+    </div>
   );
 }

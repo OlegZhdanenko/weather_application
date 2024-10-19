@@ -1,5 +1,7 @@
 import ReactApexChart from "react-apexcharts";
 import css from "./WeatherCard.module.css";
+import { useSelector } from "react-redux";
+import clsx from "clsx";
 export default function WeatherCard({ weather, weatherData, error }) {
   const series = [
     {
@@ -34,25 +36,30 @@ export default function WeatherCard({ weather, weatherData, error }) {
       },
     ],
   };
+  const isDarkMode = useSelector((state) => state.theme.darkMode);
 
   return (
-    <div className={css.card}>
-      <h2 className={css.cityName}>Weather Forecast for {weather.city}</h2>
-      <div className={css.list}>
+    weather && (
+      <div className={clsx(isDarkMode ? css.card : css.cardLight)}>
         <div className={css.item}>
-          <div className={css.itemTemp}>
-            <p className={css.description}>Temperature: {weather.temp}°C</p>
-            <p className={css.description}>
-              Humidity: {weatherData[0]?.humidity}%
-            </p>
+          <div className={css.list}>
+            <div className={css.itemTemp}>
+              <p className={css.temp}>{weather.temp}°C</p>
+              <p className={css.today}>Today</p>
+            </div>
+            <div className={css.itemImg}>
+              <img
+                src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`}
+                alt={weather.description}
+                className={css.img}
+              />
+            </div>
           </div>
-          <div className={css.itemImg}>
-            <img
-              src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`}
-              alt={weather.description}
-              className={css.img}
-            />
-            <p className={css.description}>{weather.description}</p>
+          <div>
+            <p className={css.cityName}>
+              Time:{new Date().toLocaleTimeString()}
+            </p>
+            <p className={css.cityName}>Location: {weather.city}</p>
           </div>
         </div>
         <ReactApexChart
@@ -63,6 +70,6 @@ export default function WeatherCard({ weather, weatherData, error }) {
           width={500}
         />
       </div>
-    </div>
+    )
   );
 }

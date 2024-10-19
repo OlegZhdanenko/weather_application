@@ -1,20 +1,24 @@
 .card {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 380px;
   width: 1000px;
-  border: 1px solid white;
   border-radius: 40px;
-  padding: 25px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  padding: 35px;
+  box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
+  background: #4f4f4f;
 }
-.list {
+.cardLight {
   display: flex;
-
-  gap: 25px;
+  justify-content: center;
+  align-items: center;
+  height: 380px;
+  width: 1000px;
+  border-radius: 40px;
+  padding: 35px;
+  box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
+  background: #fff;
 }
 .cityName {
   align-self: center;
@@ -23,22 +27,21 @@
   font-size: 24px;
   font-weight: 600;
   line-height: 32.68px;
-  text-align: center;
+  text-align: left;
 }
 .item {
   display: flex;
+  flex-direction: column;
   width: 500px;
   height: 300px;
 }
 .itemTemp {
-  width: 240px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
 }
 .itemImg {
-  width: 240px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,4 +57,19 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 21.79px;
+}
+.today {
+  font-weight: 400;
+  font-size: 40px;
+  color: #fff;
+  text-align: left;
+}
+.list {
+  display: flex;
+}
+.temp {
+  margin: 0;
+  font-weight: 600;
+  font-size: 85px;
+  color: #4793ff;
 }

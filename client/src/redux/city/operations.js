@@ -18,7 +18,7 @@ export const deleteCity = createAsyncThunk(
   async (cityId, thunkAPI) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/favorites/${cityId}`
+        `http://localhost:3000/api/favorites/city:${cityId}`
       );
       return response.data;
     } catch (e) {
@@ -30,9 +30,10 @@ export const addCity = createAsyncThunk(
   "weather/addCity",
   async (city, thunkAPI) => {
     try {
-      const response = await axios.delete(
+      const response = await axios.post(
         `http://localhost:3000/api/favorites/${city}`
       );
+
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

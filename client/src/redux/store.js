@@ -11,10 +11,9 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-// import weatherSlice from "./weather/Slice.js";
 import favoriteSlice from "./city/Slice.js";
 import authSlise from "./auth/slice";
-
+import themeReducer from "./Theme/themeSlice";
 const authPersistConfig = {
   key: "root",
   storage,
@@ -25,7 +24,7 @@ const authPersistedReducer = persistReducer(authPersistConfig, authSlise);
 export const store = configureStore({
   reducer: {
     cities: favoriteSlice,
-    // weather: weatherSlice,
+    theme:themeReducer,
     auth: authPersistedReducer,
   },
   middleware: (getDefaultMiddleware) =>

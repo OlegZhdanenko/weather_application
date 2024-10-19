@@ -1,0 +1,16 @@
+.icon {
+  width: 20px;
+  height: 20px;
+}
+.btn {
+  margin: 0;
+  border-radius: 50%;
+  background-color: #4793ff;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+.btn:hover {
+  opacity: 0.8;
+}

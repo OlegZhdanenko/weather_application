@@ -4,11 +4,10 @@ import { useDispatch } from "react-redux";
 import { logOut } from "../../redux/auth/slice";
 import css from "../UserMenu/UserMenu.module.css";
 import toast from "react-hot-toast";
+import ThemeBtn from "../ThemeBtn/ThemeBtn";
 
 export default function UserMenu() {
   const user = useSelector(selectUser);
-  console.log({ user });
-
   const dispatch = useDispatch();
   const logOutHandler = () => {
     dispatch(logOut());
@@ -17,8 +16,9 @@ export default function UserMenu() {
 
   return (
     <div className={css.wrapper}>
+      <ThemeBtn />
       <p className={css.username}>Welcome, {user.email}</p>
-      <button type="submit" onClick={logOutHandler}>
+      <button type="submit" onClick={logOutHandler} className={css.btn}>
         Logout
       </button>
     </div>

@@ -1,0 +1,22 @@
+.conteinerWeater {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 950px;
+  margin: 0 25px;
+}
+.listWeater {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.itemWeater {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.inputSearch {
+  margin-bottom: 20px;
+  color: #4f4f4f;
+}

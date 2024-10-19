@@ -1,9 +1,13 @@
 import { useState } from "react";
 import Select from "react-select";
 import axios from "axios";
+import Card from "../Card/Card";
+import ApexChart from "../ApexChart/ApexChart";
+import css from "./InputSearchCities.module.css";
 
-export default function InputSearchCities({ selectedCity, setSelectedCity }) {
+export default function InputSearchCities() {
   const [cityOptions, setCityOptions] = useState([]);
+  const [currentCity, setCurrentCity] = useState([]);
 
   const fetchCities = async (query) => {
     try {
@@ -30,29 +34,49 @@ export default function InputSearchCities({ selectedCity, setSelectedCity }) {
   };
 
   const handleInputChange = (inputValue) => {
-    if (inputValue.length > 2) {
+    if (inputValue.length > 3) {
       fetchCities(inputValue);
     }
   };
+  const handleCityChange = (selectedOption) => {
+    setCurrentCity((prevItems) => [
+      ...prevItems,
+      { id: Date.now(), name: selectedOption.value },
+    ]);
+  };
+  const handleRemoveCity = (cityToRemove) => {
+    setCurrentCity((currentCity) =>
+      currentCity.filter((city) => city.name !== cityToRemove)
+    );
+  };
 
   return (
-    <div>
+    <div className={css.conteinerWeater}>
       <Select
         options={cityOptions}
-        value={selectedCity}
-        onChange={(selectedOption) => {
-          setSelectedCity(selectedOption);
-          setCityOptions([]);
-        }}
+        onChange={handleCityChange}
         isClearable
         onInputChange={handleInputChange}
         placeholder="Enter a city"
         noOptionsMessage={() => "No cities found"}
+        className={css.inputSearch}
+        styles={{
+          control: (baseStyles, state) => ({
+            ...baseStyles,
+            borderColor: state.isFocused ? "white" : "blue",
+          }),
+        }}
       />
-      {selectedCity && (
-        <div>
-          <p>Selected City: {selectedCity.label}</p>
-        </div>
+
+      {currentCity && (
+        <ul className={css.listWeater}>
+          {currentCity.map((item) => (
+            <li key={item.id} className={css.itemWeater}>
+              <Card currentCity={item.name} onRemove={handleRemoveCity} />
+              <ApexChart currentCity={item.name} />
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );
