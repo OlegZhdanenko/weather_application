@@ -16,11 +16,11 @@ export class FavoritesService {
     private readonly categoryRepository: Repository<Favorite>,
   ) {}
   async create(createFavoriteDto: CreateFavoriteDto, id: number) {
-    const isExist = await this.categoryRepository.findBy({
+    const favoriteCities = await this.categoryRepository.findBy({
       user: { id },
       city: createFavoriteDto.city,
     });
-    if (isExist.length)
+    if (favoriteCities.length)
       throw new BadRequestException('This city already in favorite');
     const newFavoriteCity = {
       city: createFavoriteDto.city,

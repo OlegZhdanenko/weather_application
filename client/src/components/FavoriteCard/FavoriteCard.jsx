@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
-import css from "./Card.module.css";
+import css from "./FavoriteCard.module.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { addCity, deleteCity } from "../../redux/city/operations";
+import { deleteCity } from "../../redux/city/operations";
 import clsx from "clsx";
-import { selectAllCities } from "../../redux/city/selectors";
-import toast from "react-hot-toast";
 
-export default function Card({ currentCity, onRemove }) {
+export default function FavoriteCard({ currentCity, currentCityId }) {
   const [weather, setWeather] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const favoriteCities = useSelector(selectAllCities);
+  console.log({ currentCity });
+  console.log({ currentCityId });
   async function getWeather() {
     try {
       const response = await axios.get(
@@ -30,29 +28,14 @@ export default function Card({ currentCity, onRemove }) {
   }, [currentCity]);
   const dispatch = useDispatch();
 
-  const handleDelete = () => {
-    setIsModalOpen(true);
+  const handleDeleteFavorites = () => {
+    dispatch(deleteCity(currentCityId));
   };
 
-  const confirmDelete = () => {
-    onRemove(currentCity);
-    setIsModalOpen(false);
-  };
-
-  const cancelDelete = () => {
-    setIsModalOpen(false);
-  };
   let temperature = null;
   if (weather) {
     temperature = Math.round(weather.main.temp);
   }
-
-  const handleAddToFavorites = () => {
-    if (favoriteCities.cities.length >= 5) {
-      return toast.error("To add, remove the city. Maximum 5!");
-    }
-    dispatch(addCity(currentCity));
-  };
 
   const isDarkMode = useSelector((state) => state.theme.darkMode);
 
@@ -75,32 +58,11 @@ export default function Card({ currentCity, onRemove }) {
           <p className={css.cityName}>Time:{new Date().toLocaleTimeString()}</p>
           <p className={css.cityName}>Location: {weather.name}</p>
           <div className={css.Button}>
-            <button className={css.btn} onClick={handleAddToFavorites}>
-              Add to favorites
-            </button>
-            <button className={css.btn} onClick={handleDelete}>
-              Delete
+            <button className={css.btn} onClick={handleDeleteFavorites}>
+              Remove from favorites
             </button>
           </div>
         </div>
-        {isModalOpen && (
-          <>
-            <div className={css.modal} onClick={cancelDelete}>
-              <p className={css.textModal}>
-                Are you sure you want to delete this city?
-              </p>
-              <div className={css.btnModalContainer}>
-                <button className={css.btnModal} onClick={confirmDelete}>
-                  Yes
-                </button>
-                <button className={css.btnModal} onClick={cancelDelete}>
-                  No
-                </button>
-              </div>
-            </div>
-            <div className={css.modalOverlay} onClick={cancelDelete}></div>
-          </>
-        )}
       </div>
     )
   );

@@ -1,0 +1,40 @@
+.firstSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 280px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: black;
+}
+.firstSectionLight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 280px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: fff;
+}
+@media screen and (min-width: 375px) {
+  .applicationText {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .applicationText {
+    margin-bottom: 25px;
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .applicationText {
+    margin-bottom: 30px;
+    font-size: 35px;
+  }
+}

@@ -18,10 +18,6 @@ export default function RegistrationForm() {
   };
 
   const FeedbackSchema = Yup.object().shape({
-    name: Yup.string()
-      .min(3, "Too Short!")
-      .max(50, "Too Long!")
-      .required("Required"),
     email: Yup.string()
       .min(3, "Too Short!")
       .max(50, "Too Long!")
@@ -34,7 +30,6 @@ export default function RegistrationForm() {
   return (
     <Formik
       initialValues={{
-        name: "",
         email: "",
         password: "",
       }}
@@ -42,10 +37,6 @@ export default function RegistrationForm() {
       validationSchema={FeedbackSchema}
     >
       <Form className={css.form}>
-        <label className={css.label}>
-          Username
-          <Field type="text" name="name" />
-        </label>
         <label className={css.label}>
           Email
           <Field type="email" name="email" />

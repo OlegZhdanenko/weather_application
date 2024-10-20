@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "react-select";
 import axios from "axios";
 import Card from "../Card/Card";
 import ApexChart from "../ApexChart/ApexChart";
 import css from "./InputSearchCities.module.css";
+import { selectAllCities } from "../../redux/city/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { addCity } from "../../redux/city/operations";
 
 export default function InputSearchCities() {
   const [cityOptions, setCityOptions] = useState([]);
   const [currentCity, setCurrentCity] = useState([]);
+
+  const favoriteCities = useSelector(selectAllCities);
+  const { cities } = favoriteCities;
 
   const fetchCities = async (query) => {
     try {
@@ -38,12 +44,14 @@ export default function InputSearchCities() {
       fetchCities(inputValue);
     }
   };
-  const handleCityChange = (selectedOption) => {
-    setCurrentCity((prevItems) => [
-      ...prevItems,
-      { id: Date.now(), name: selectedOption.value },
-    ]);
-  };
+
+  function handleCityChange(selectedOption) {
+    if (selectedOption) {
+      setCurrentCity((prevItems) => {
+        return [...prevItems, { id: Date.now(), name: selectedOption.value }];
+      });
+    }
+  }
   const handleRemoveCity = (cityToRemove) => {
     setCurrentCity((currentCity) =>
       currentCity.filter((city) => city.name !== cityToRemove)
@@ -52,28 +60,37 @@ export default function InputSearchCities() {
 
   return (
     <div className={css.conteinerWeater}>
-      <Select
-        options={cityOptions}
-        onChange={handleCityChange}
-        isClearable
-        onInputChange={handleInputChange}
-        placeholder="Enter a city"
-        noOptionsMessage={() => "No cities found"}
-        className={css.inputSearch}
-        styles={{
-          control: (baseStyles, state) => ({
-            ...baseStyles,
-            borderColor: state.isFocused ? "white" : "blue",
-          }),
-        }}
-      />
-
+      <div className={css.input}>
+        <Select
+          options={cityOptions}
+          onChange={handleCityChange}
+          isClearable
+          onInputChange={handleInputChange}
+          placeholder="Enter a city"
+          noOptionsMessage={() => "No cities found"}
+          className={css.inputSearch}
+          styles={{
+            control: (baseStyles, state) => ({
+              ...baseStyles,
+              borderColor: state.isFocused ? "white" : "blue",
+            }),
+          }}
+        />
+      </div>
       {currentCity && (
         <ul className={css.listWeater}>
           {currentCity.map((item) => (
             <li key={item.id} className={css.itemWeater}>
-              <Card currentCity={item.name} onRemove={handleRemoveCity} />
-              <ApexChart currentCity={item.name} />
+              <div className={css.card}>
+                <Card
+                  currentCity={item.name}
+                  onRemove={handleRemoveCity}
+                  currentCityId={item.id}
+                />
+              </div>
+              <div className={css.apex}>
+                <ApexChart currentCity={item.name} />
+              </div>
             </li>
           ))}
         </ul>

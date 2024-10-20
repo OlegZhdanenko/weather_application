@@ -2,20 +2,20 @@
   display: flex;
 
   align-items: center;
-  border-radius: 10px;
+  border-radius: 20px;
   width: 350px;
   height: 300px;
-  padding: 10px;
+  padding: 25px;
   box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
   background: #4f4f4f;
 }
 .cardLight {
   display: flex;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 20px;
   width: 350px;
   height: 300px;
-  padding: 10px;
+  padding: 25px;
   box-shadow: 2px 5px 25px -3px rgba(71, 147, 255, 0.5);
   background: #fff;
 }
@@ -30,13 +30,24 @@
 }
 .item {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: 340px;
+  /* width: 500px;
+  height: 300px; */
 }
-
+.itemTemp {
+  width: 200px;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; */
+}
 .itemImg {
   width: 200px;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
 }
 .img {
   width: 150px;
@@ -45,13 +56,13 @@
 .temp {
   margin: 0;
   font-weight: 600;
-  font-size: 36px;
+  font-size: 85px;
   color: #4793ff;
 }
 .today {
-  font-weight: 600;
-  font-size: 20px;
-  color: #939cb0;
+  font-weight: 400;
+  font-size: 40px;
+  color: #fff;
   text-align: left;
 }
 .Button {
@@ -137,33 +148,4 @@
 }
 .btnModalContainer {
   display: flex;
-}
-@media screen and (min-width: 375px) {
-  .card {
-    width: 360px;
-    height: 300px;
-    padding: 10px;
-    box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
-    background: #4f4f4f;
-  }
-  .temp {
-    margin: 0;
-    font-weight: 600;
-    font-size: 55px;
-    color: #4793ff;
-  }
-  .today {
-    font-weight: 600;
-    font-size: 30px;
-    color: #939cb0;
-    text-align: left;
-  }
-}
-@media screen and (min-width: 768px) {
-  .img {
-    width: 200px;
-    height: 200px;
-  }
-}
-@media screen and (min-width: 1200px) {
 }

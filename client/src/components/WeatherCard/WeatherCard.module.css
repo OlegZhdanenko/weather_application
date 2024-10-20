@@ -1,39 +1,39 @@
 .card {
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 380px;
-  width: 1000px;
-  border-radius: 40px;
-  padding: 35px;
+  max-height: 260px;
+  max-width: 260px;
+  border-radius: 20px;
+  padding: 5px;
   box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
   background: #4f4f4f;
 }
 .cardLight {
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 380px;
-  width: 1000px;
-  border-radius: 40px;
-  padding: 35px;
-  box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
+  max-height: 260px;
+  max-width: 260px;
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: 2px 5px 25px -3px rgba(71, 147, 255, 0.5);
   background: #fff;
 }
 .cityName {
   align-self: center;
   margin: 0;
-  margin-bottom: 25px;
-  font-size: 24px;
-  font-weight: 600;
+  color: #939cb0;
+  font-size: 20px;
+  font-weight: 300;
   line-height: 32.68px;
   text-align: left;
 }
 .item {
   display: flex;
   flex-direction: column;
-  width: 500px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
 }
 .itemTemp {
   display: flex;
@@ -48,8 +48,8 @@
   align-items: center;
 }
 .img {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
 }
 .description {
   margin: 0;
@@ -59,17 +59,109 @@
   line-height: 21.79px;
 }
 .today {
-  font-weight: 400;
-  font-size: 40px;
-  color: #fff;
+  font-weight: 600;
+  font-size: 20px;
+  color: #939cb0;
   text-align: left;
 }
 .list {
   display: flex;
+  width: 100%;
+  height: 100%;
 }
 .temp {
   margin: 0;
   font-weight: 600;
-  font-size: 85px;
+  font-size: 36px;
   color: #4793ff;
+}
+.apex {
+  visibility: hidden;
+}
+@media screen and (min-width: 375px) {
+  .cardLight {
+    max-height: 400px;
+    max-width: 360px;
+    flex-direction: column;
+    padding: 10px;
+  }
+  .card {
+    max-height: 400px;
+    max-width: 360px;
+    flex-direction: column;
+    padding: 10px;
+  }
+  .apex {
+    visibility: visible;
+  }
+  .img {
+    width: 150px;
+    height: 150px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .cardLight {
+    max-height: 380px;
+    max-width: 700px;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .card {
+    max-height: 380px;
+    max-width: 700px;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .item {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+  }
+  .temp {
+    font-size: 45px;
+  }
+  .today {
+    font-size: 35px;
+  }
+  .cityName {
+    font-size: 30px;
+  }
+  .apex {
+    display: flex;
+    align-items: center;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .cardLight {
+    max-height: 380px;
+    max-width: 1000px;
+  }
+  .card {
+    max-height: 380px;
+    max-width: 1000px;
+  }
+  .item {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 300px;
+  }
+  .temp {
+    font-size: 60px;
+  }
+  .today {
+    font-size: 35px;
+  }
+  .cityName {
+    font-weight: 400;
+    font-size: 30px;
+  }
+  .img {
+    width: 200px;
+    height: 200px;
+  }
+  .apex {
+    box-sizing: border-box;
+  }
 }

@@ -1,9 +1,7 @@
 .conteinerWeater {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  width: 950px;
-  margin: 0 25px;
+  align-items: center;
 }
 .listWeater {
   display: flex;
@@ -13,10 +11,42 @@
 .itemWeater {
   list-style: none;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 10px;
+}
+.input {
+  width: 280px;
 }
 .inputSearch {
-  margin-bottom: 20px;
+  width: 100%;
+  margin: 0 10px 10px 10px;
   color: #4f4f4f;
+}
+.apex {
+  display: none;
+}
+@media screen and (min-width: 375px) {
+  .input {
+    width: 500px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  .apex {
+    display: block;
+  }
+}
+@media screen and (min-width: 768px) {
+  .input {
+    width: 800px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .input {
+    width: 1000px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
 }

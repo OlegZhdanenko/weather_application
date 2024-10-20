@@ -1,0 +1,45 @@
+.applicationText {
+  font-size: 18px;
+  color: #4793ff;
+  margin-bottom: 10px;
+}
+.containerHome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: black;
+}
+.containerHomeLight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: fff;
+}
+@media screen and (min-width: 375px) {
+  .applicationText {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .applicationText {
+    margin-bottom: 25px;
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .applicationText {
+    margin-bottom: 30px;
+    font-size: 35px;
+  }
+}

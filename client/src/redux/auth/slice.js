@@ -18,7 +18,6 @@ const authSlise = createSlice({
   reducers: {
     logOut: (state) => {
       state.user = {
-        name: null,
         email: null,
         password: null,
         id: null,

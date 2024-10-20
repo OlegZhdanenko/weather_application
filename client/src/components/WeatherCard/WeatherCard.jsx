@@ -57,18 +57,14 @@ export default function WeatherCard({ weather, weatherData, error }) {
           </div>
           <div>
             <p className={css.cityName}>
-              Time:{new Date().toLocaleTimeString()}
+              Time: {new Date().toLocaleTimeString()}
             </p>
             <p className={css.cityName}>Location: {weather.city}</p>
           </div>
         </div>
-        <ReactApexChart
-          options={options}
-          series={series}
-          type="line"
-          height={300}
-          width={500}
-        />
+        <div className={css.apex}>
+          <ReactApexChart options={options} series={series} type="line" />
+        </div>
       </div>
     )
   );

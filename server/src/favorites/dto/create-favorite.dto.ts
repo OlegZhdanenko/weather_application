@@ -1,9 +1,6 @@
-import { IsNotEmpty, IsOptional } from 'class-validator';
-import { User } from 'src/users/entities/user.entity';
+import { IsNotEmpty } from 'class-validator';
 
 export class CreateFavoriteDto {
   @IsNotEmpty()
   city: string;
-  @IsOptional()
-  user?: User;
 }

@@ -65,13 +65,7 @@ export default function ApexChart({ currentCity }) {
 
   return (
     <div className={clsx(isDarkMode ? css.container : css.containerLight)}>
-      <ReactApexChart
-        options={options}
-        series={series}
-        type="line"
-        height={250}
-        width={450}
-      />
+      <ReactApexChart options={options} series={series} type="line" />
     </div>
   );
 }

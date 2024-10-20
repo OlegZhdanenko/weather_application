@@ -1,6 +1,4 @@
 .favListContainer {
-  width: 300px;
-  height: 380px;
   border-radius: 40px;
   border-radius: 20px;
   padding: 25px;
@@ -8,11 +6,19 @@
   background: #4f4f4f;
 }
 .favListContainerLight {
-  width: 300px;
-  height: 380px;
   border-radius: 40px;
   border-radius: 20px;
   padding: 25px;
-  box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
+  box-shadow: 2px 5px 25px -3px rgba(71, 147, 255, 0.5);
   background: #fff;
+}
+.listWeater {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.itemWeater {
+  display: flex;
+  gap: 20px;
 }

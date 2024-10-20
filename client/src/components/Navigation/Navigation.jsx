@@ -7,7 +7,7 @@ import clsx from "clsx";
 export default function Navigation() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
-    <nav>
+    <nav className={css.nav} >
       <NavLink
         className={({ isActive }) => {
           return clsx(css.link, isActive && css.isActive);
@@ -24,6 +24,16 @@ export default function Navigation() {
           to="/weather"
         >
           Weather
+        </NavLink>
+      )}
+      {isLoggedIn && (
+        <NavLink
+          className={({ isActive }) => {
+            return clsx(css.link, isActive && css.isActive);
+          }}
+          to="/favorites"
+        >
+          Favorites
         </NavLink>
       )}
     </nav>

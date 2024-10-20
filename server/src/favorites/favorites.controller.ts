@@ -20,10 +20,16 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 export class FavoritesController {
   constructor(private readonly favoritesService: FavoritesService) {}
 
-  @Post()
+  @Post(':city')
   @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe())
-  create(@Body() createFavoriteDto: CreateFavoriteDto, @Req() req) {
+  create(
+    @Param('city') city: string,
+    @Body() createFavoriteDto: CreateFavoriteDto,
+    @Req() req,
+  ) {
+    console.log(city);
+
     return this.favoritesService.create(createFavoriteDto, req.user.id);
   }
 
@@ -35,14 +41,14 @@ export class FavoritesController {
 
   @Get(':id')
   @UseGuards(JwtAuthGuard)
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.favoritesService.findOne(+id);
   }
 
   @Patch(':id')
   @UseGuards(JwtAuthGuard)
   update(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateFavoriteDto: UpdateFavoriteDto,
   ) {
     return this.favoritesService.update(+id, updateFavoriteDto);
@@ -50,7 +56,7 @@ export class FavoritesController {
 
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: number) {
     return this.favoritesService.remove(+id);
   }
 }
