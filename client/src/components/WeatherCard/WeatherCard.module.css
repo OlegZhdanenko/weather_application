@@ -10,7 +10,6 @@
   background: #4f4f4f;
 }
 .cardLight {
-  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   max-height: 260px;
@@ -103,13 +102,13 @@
   .cardLight {
     max-height: 380px;
     max-width: 700px;
-    flex-direction: column;
+    flex-direction: row;
     padding: 20px;
   }
   .card {
     max-height: 380px;
     max-width: 700px;
-    flex-direction: column;
+    flex-direction: row;
     padding: 20px;
   }
   .item {

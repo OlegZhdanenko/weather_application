@@ -20,8 +20,12 @@ export default function FavoriteList() {
         <ul className={css.listWeater}>
           {favoriteCities.cities.map((item) => (
             <li key={item.id} className={css.itemWeater}>
-              <FavoriteCard currentCity={item.city} currentCityId={item.id} />
-              <ApexChart currentCity={item.city} />
+              <div className={css.card}>
+                <FavoriteCard currentCity={item.city} currentCityId={item.id} />
+              </div>
+              <div className={css.apex}>
+                <ApexChart currentCity={item.city} />
+              </div>
             </li>
           ))}
         </ul>

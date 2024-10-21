@@ -10,6 +10,7 @@ export default function UserMenu() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const logOutHandler = () => {
+    localStorage.removeItem("currentCity");
     dispatch(logOut());
     toast.success("Logout succees!");
   };

@@ -11,7 +11,9 @@ export default function AppBar() {
   return (
     <header className={css.header}>
       <Navigation />
-      <div>{isLoggedIn ? <UserMenu /> : <AuthNav />}</div>
+      <div className={css.blockBar}>
+        {isLoggedIn ? <UserMenu /> : <AuthNav />}
+      </div>
     </header>
   );
 }

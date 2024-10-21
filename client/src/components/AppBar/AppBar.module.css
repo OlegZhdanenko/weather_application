@@ -2,12 +2,10 @@
   display: flex;
   justify-content: space-between;
   padding-bottom: 10px;
-  align-items: center;
+
   margin-bottom: 16px;
 }
-
-@media screen and (max-width: 375px) {
-  .header {
-    visibility: hidden;
-  }
+.blockBar {
+  display: flex;
+  align-items: center;
 }

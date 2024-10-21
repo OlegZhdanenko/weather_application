@@ -16,8 +16,6 @@ export default function ApexChart({ currentCity }) {
           headers: "HTTP/1.1 200 OK",
         }
       );
-      console.log("response.data.list", response.data.list);
-
       setWeatherData(response.data.list);
     } catch (e) {
       console.error(e);

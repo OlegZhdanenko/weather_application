@@ -10,8 +10,13 @@ import { addCity } from "../../redux/city/operations";
 
 export default function InputSearchCities() {
   const [cityOptions, setCityOptions] = useState([]);
-  const [currentCity, setCurrentCity] = useState([]);
-
+  const [currentCity, setCurrentCity] = useState(() => {
+    const savedCities = localStorage.getItem("currentCity");
+    return savedCities ? JSON.parse(savedCities) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem("currentCity", JSON.stringify(currentCity));
+  }, [currentCity]);
   const favoriteCities = useSelector(selectAllCities);
   const { cities } = favoriteCities;
 

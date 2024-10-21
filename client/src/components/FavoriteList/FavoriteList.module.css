@@ -1,17 +1,4 @@
-.favListContainer {
-  border-radius: 40px;
-  border-radius: 20px;
-  padding: 25px;
-  box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
-  background: #4f4f4f;
-}
-.favListContainerLight {
-  border-radius: 40px;
-  border-radius: 20px;
-  padding: 25px;
-  box-shadow: 2px 5px 25px -3px rgba(71, 147, 255, 0.5);
-  background: #fff;
-}
+
 .listWeater {
   list-style: none;
   display: flex;
@@ -19,6 +6,40 @@
   gap: 20px;
 }
 .itemWeater {
+  list-style: none;
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.apex {
+  display: none;
+}
+@media screen and (min-width: 375px) {
+  .input {
+    width: 500px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  .apex {
+    display: block;
+  }
+}
+@media screen and (min-width: 768px) {
+  .input {
+    width: 100%;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  .itemWeater {
+    flex-direction: row;
+    gap: 15px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .input {
+    width: 1000px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
 }

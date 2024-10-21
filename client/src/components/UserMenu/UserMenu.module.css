@@ -5,7 +5,9 @@
 }
 
 .username {
-  font-weight: 700;
+  display: none;
+  font-size: 16px;
+  font-weight: 500;
   color: #4793ff;
 }
 .btn {
@@ -32,4 +34,14 @@
   outline-color: rgba(255, 255, 255, 0);
   outline-offset: 15px;
   color: #fff;
+}
+
+@media screen and (min-width: 375px) {
+}
+@media screen and (min-width: 768px) {
+  .username {
+    display: block;
+  }
+}
+@media screen and (min-width: 1200px) {
 }
