@@ -2,6 +2,7 @@ import ReactApexChart from "react-apexcharts";
 import css from "./WeatherCard.module.css";
 import { useSelector } from "react-redux";
 import clsx from "clsx";
+import Spinner from "../Spinner/Spinner";
 export default function WeatherCard({ weather, weatherData, error }) {
   const series = [
     {

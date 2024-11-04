@@ -7,8 +7,6 @@ import clsx from "clsx";
 
 export default function FavoriteCard({ currentCity, currentCityId }) {
   const [weather, setWeather] = useState(null);
-  console.log({ currentCity });
-  console.log({ currentCityId });
   async function getWeather() {
     try {
       const response = await axios.get(
